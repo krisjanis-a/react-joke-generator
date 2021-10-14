@@ -5,6 +5,7 @@ import fetchJoke from "../util/fetchJoke";
 const AppState = ({ children }) => {
   const [joke, setJoke] = useState("");
   const [previousJokes, setPreviousJokes] = useState([]);
+  const [loading, setLoading] = useState(null);
 
   const updateJoke = () => {
     const requestJoke = async () => {
@@ -15,7 +16,10 @@ const AppState = ({ children }) => {
       }
 
       setJoke(newjoke.joke);
+      setLoading(false);
     };
+
+    setLoading(true);
 
     setJoke(null);
 
@@ -25,7 +29,9 @@ const AppState = ({ children }) => {
   };
 
   const updatePreviousJokes = (lastJoke) => {
-    if (lastJoke === "") return;
+    if (lastJoke === ("" || null)) {
+      return;
+    }
 
     let updatedPrevJokes = [...previousJokes];
 
@@ -43,6 +49,7 @@ const AppState = ({ children }) => {
       value={{
         joke,
         previousJokes,
+        loading,
         updateJoke,
       }}
     >

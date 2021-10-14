@@ -6,13 +6,20 @@ const List = () => {
   const { previousJokes } = useContext(Context);
 
   return (
-    <div className="list">
-      <h3>Previous dad jokes:</h3>
-      <ul>
-        {previousJokes.length > 0
-          ? previousJokes.map((prevJoke) => <ListItem prevJoke={prevJoke} />)
-          : null}
-      </ul>
+    <div className="w-3/5 mx-auto">
+      <h3 className="text-center">Previous dad jokes:</h3>
+      {previousJokes.length > 0 ? (
+        <ul className="list-disc ">
+          {previousJokes.map(
+            (prevJoke) =>
+              prevJoke !== ("" || null) && (
+                <ListItem prevJoke={prevJoke} key={prevJoke} />
+              )
+          )}
+        </ul>
+      ) : (
+        <p>Nothing yet, ask me to give it to you.</p>
+      )}
     </div>
   );
 };

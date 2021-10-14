@@ -9,11 +9,10 @@ const HomePage = () => {
 
   const buttonProps = {
     name: "Give it to me",
-    type: "Primary",
   };
 
   return (
-    <div className="home_page">
+    <div className="home_page container bg-white rounded-2xl max-w-screen-lg px-8 mx-auto my-8 font-poppins flex flex-col justify-center items-center">
       <Heading title={headingTitle} />
       <Button props={buttonProps} />
       <Display />
