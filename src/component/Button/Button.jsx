@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/context";
+import "./Button.css";
 
 const Button = ({ props }) => {
-  const { updateJoke, loading } = useContext(Context);
+  const { updateJoke, loading, setLoading } = useContext(Context);
 
   return (
-    <div className="button">
+    <div className="button sm:w-3/5 w-4/5 flex justify-center items-center">
       <button
-        className="px-4 py-2 bg-indigo-800 text-white rounded-2xl hover:bg-indigo-900 disabled:cursor-not-allowed"
+        type="button"
+        className="py-2 px-6 text-sm sm:text-base sm:py-4 sm:px-8 bg-indigo-800 text-white rounded-3xl hover:bg-indigo-900 "
         onClick={() => {
           updateJoke();
+          setLoading(true);
         }}
         disabled={loading}
       >

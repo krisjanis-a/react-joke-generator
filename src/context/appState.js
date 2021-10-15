@@ -3,7 +3,7 @@ import { Context } from "./context";
 import fetchJoke from "../util/fetchJoke";
 
 const AppState = ({ children }) => {
-  const [joke, setJoke] = useState("");
+  const [joke, setJoke] = useState(null);
   const [previousJokes, setPreviousJokes] = useState([]);
   const [loading, setLoading] = useState(null);
 
@@ -19,8 +19,6 @@ const AppState = ({ children }) => {
       setLoading(false);
     };
 
-    setLoading(true);
-
     setJoke(null);
 
     updatePreviousJokes(joke);
@@ -29,19 +27,19 @@ const AppState = ({ children }) => {
   };
 
   const updatePreviousJokes = (lastJoke) => {
-    if (lastJoke === ("" || null)) {
+    if (lastJoke === null) {
       return;
+    } else {
+      let updatedPrevJokes = [...previousJokes];
+
+      updatedPrevJokes.unshift(lastJoke);
+
+      if (updatedPrevJokes.length > 5) {
+        updatedPrevJokes.pop();
+      }
+
+      setPreviousJokes(updatedPrevJokes);
     }
-
-    let updatedPrevJokes = [...previousJokes];
-
-    updatedPrevJokes.unshift(lastJoke);
-
-    if (updatedPrevJokes.length > 5) {
-      updatedPrevJokes.pop();
-    }
-
-    setPreviousJokes(updatedPrevJokes);
   };
 
   return (
@@ -51,6 +49,7 @@ const AppState = ({ children }) => {
         previousJokes,
         loading,
         updateJoke,
+        setLoading,
       }}
     >
       {children}

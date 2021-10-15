@@ -4,7 +4,7 @@ import AppState from "./context/appState";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App min-h-screen flex justify-center items-start">
       <AppState>
         <HomePage />
       </AppState>

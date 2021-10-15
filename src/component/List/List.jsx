@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/context";
 import ListItem from "../ListItem/ListItem";
+import "./List.css";
 
 const List = () => {
   const { previousJokes } = useContext(Context);
 
   return (
-    <div className="w-3/5 mx-auto">
-      <h3 className="text-center">Previous dad jokes:</h3>
+    <div className="list sm:w-3/5 w-5/6 mx-auto pl-6 pr-3 mb-8 h-64 overflow-y-scroll">
       {previousJokes.length > 0 ? (
-        <ul className="list-disc ">
+        <ul className="list list-disc list-outside">
           {previousJokes.map(
             (prevJoke) =>
               prevJoke !== ("" || null) && (
@@ -18,7 +18,9 @@ const List = () => {
           )}
         </ul>
       ) : (
-        <p>Nothing yet, ask me to give it to you.</p>
+        <p className="text-center mb-4 text-xs sm:text-sm">
+          Nothing yet, ask me to give it to you.
+        </p>
       )}
     </div>
   );

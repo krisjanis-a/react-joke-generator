@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../../context/context";
 import ClipLoader from "react-spinners/ClipLoader";
 import { css } from "@emotion/react";
+import "./Display.css";
 
 const override = css`
   display: block;
@@ -13,8 +14,8 @@ const Display = () => {
   const { joke, loading } = useContext(Context);
 
   return (
-    <div className="joke_display my-5 h-[4rem] text-center font-oswald font-semibold flex justify-center items-center">
-      <h2>
+    <div className="joke_display my-4 sm:my-8 sm:w-3/5 w-4/5  text-center font-oswald font-semibold flex justify-center items-center">
+      <h2 className="text-lg sm:text-xl">
         {joke ? (
           joke
         ) : loading ? (

@@ -4,7 +4,9 @@ const ListItem = ({ prevJoke }) => {
   return (
     prevJoke !== "" && (
       <div className="list_item">
-        <li className="my-4">{prevJoke}</li>
+        <li className="list-item my-2 text-justify text-xs sm:text-sm">
+          {prevJoke}
+        </li>
       </div>
     )
   );
