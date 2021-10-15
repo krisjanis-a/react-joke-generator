@@ -1,3 +1,3 @@
 # Dad Jokes Generator
 
-Created with React
+Created with React & Tailwind CSS

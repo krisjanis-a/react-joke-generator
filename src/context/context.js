@@ -1,9 +1,11 @@
 import { createContext } from "react";
 
 const INITIAL_STATE = {
-  joke: "",
+  joke: String,
   previousJokes: [],
-  updateJoke: (newJoke) => {},
+  loading: Boolean,
+  updateJoke: () => {},
+  setLoading: () => {},
 };
 
 export const Context = createContext(INITIAL_STATE);
