@@ -11,10 +11,6 @@ const AppState = ({ children }) => {
     const requestJoke = async () => {
       const newjoke = await fetchJoke();
 
-      if (newjoke === joke) {
-        requestJoke();
-      }
-
       setJoke(newjoke.joke);
       setLoading(false);
     };
